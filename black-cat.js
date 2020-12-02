@@ -1,7 +1,7 @@
 let _select;
 let _hide = false;
 function $hide(selector) {
-    if (typeof selector =="string") {
+    if (typeof selector === "string") {
          _select=document.querySelector(selector)
          _select.style.visibility="hidden"
          _select.style.display="none"
