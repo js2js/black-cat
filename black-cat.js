@@ -41,8 +41,8 @@ function $opacity(selector,value) {
        // if typeof selector = all typeof except string 
        console.error("Selection.js : Please enter a valid string in selector parameter");   
 }}
-let positions ={
-    function $absolute (selector){
+let $positions = {
+    absolute (selector){
         if ( typeof selector === "string" ) {
             _select = document.querySelector(selector)
             _select.style.position="absolute"
@@ -52,7 +52,7 @@ let positions ={
         }
 
     },
-    function $fixed (selector){
+    fixed (selector){
         if ( typeof selector === "string" ) {
             _select = document.getElementById(selector)
             _select.style.position="fixed"
@@ -62,7 +62,7 @@ let positions ={
         }
 
     },
-    function $other_positions(selector,position){
+    other_positions(selector,position){
         if ( typeof selector === "string" ) {
             _select = document.getElementById(selector)
             _select.style.position="position"
