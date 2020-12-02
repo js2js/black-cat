@@ -30,21 +30,21 @@ function $opacity(selector,value) {
             console.warn("selection.js:please enter a number or string less than 1 in value parameter");
         }else{
         if (typeof value === "number") {
-            _select=document.getElementById(selector)
+            _select=document.querySelector(selector)
             _select.style.opacity=value
         } else if (typeof value === "string" ){
             value=parseFloat(value)
-            _select=document.getElementById(selector)
+            _select=document.querySelector(selector)
             _select.style.opacity=value
         }}
            } else {
        // if typeof selector = all typeof except string 
        console.error("Selection.js : Please enter a valid string in selector parameter");   
 }}
-let positions ={
-    $absolute (selector){
+let $positions = {
+    absolute (selector){
         if ( typeof selector === "string" ) {
-            _select = document.querySelector("eere")
+            _select = document.querySelector(selector)
             _select.style.position="absolute"
 
         }else{            
@@ -52,7 +52,7 @@ let positions ={
         }
 
     },
-    $fixed (selector){
+    fixed (selector){
         if ( typeof selector === "string" ) {
             _select = document.getElementById(selector)
             _select.style.position="fixed"
@@ -62,7 +62,7 @@ let positions ={
         }
 
     },
-    $other_positions(selector,position){
+    other_positions(selector,position){
         if ( typeof selector === "string" ) {
             _select = document.getElementById(selector)
             _select.style.position="position"
