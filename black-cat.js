@@ -1,6 +1,7 @@
 let _select;
 let _hide = false;
-function selnstr(command) {
+let _fade=false
+function Valid_STR(command) {
   if (typeof selector !== "string") {
     console.error(
       "Black-Cat.js : Please enter a valid string in selector parameter"
@@ -8,63 +9,62 @@ function selnstr(command) {
     command + ";";
   }
 }
-function $hide(selector) {
+function Valid_NUM(command) {
+  if (typeof time !== "number") {
+    console.error(
+      "Black-Cat.js : Please enter a valid number in selector parameter"
+    );
+    command + ";";
+  }
+}
+let values;
+function Valid_VALUE (command) {
+  if ( values > 1) {
+    console.warn(
+      "black-cat.js:please enter a number or string less than 1 in value parameter"
+    );
+  }
+  command + ";"
+}
+function _hide_(selector) {
   if (typeof selector === "string") {
     _select = document.querySelector(selector);
     _select.style.visibility = "hidden";
     _select.style.display = "none";
     _hide = true;
   }
-  selnstr((_hide = false));
+  _hide = false;
 }
-function $show(selector) {
+function _show_(selector) {
   if (typeof selector == "string") {
     _select = document.querySelector(selector);
     _select.style.visibility = "visible";
     _select.style.display = "block";
     _hide = false;
   }
-  selnstr((_hide = _hide));
+  Valid_STR((_hide = _hide));
 }
-function $opacity(selector, value) {
-  if (typeof selector === "string") {
-    if (value > 1) {
-      console.warn(
-        "black-cat.js:please enter a number or string less than 1 in value parameter"
-      );
-    } else {
-      if (typeof value === "number") {
+function _opacity_(selector, value) {
+  values=value
+if (typeof value === "number") {
         _select = document.querySelector(selector);
         _select.style.opacity = value;
+        Valid_VALUE()
       } else if (typeof value === "string") {
         value = parseFloat(value);
         _select = document.querySelector(selector);
         _select.style.opacity = value;
+        Valid_VALUE()
       }
-    }
-  }
-  selnstr();
 }
-let positions = {
-  absolute(selector) {
-    if (typeof selector === "string") {
-      _select = document.querySelector(selector);
-      _select.style.position = "absolute";
-    }
-    selnstr();
-  },
-  fixed(selector) {
-    if (typeof selector === "string") {
-      _select = document.getElementById(selector);
-      _select.style.position = "fixed";
-    }
-    selnstr();
-  },
-  other_positions(selector, position) {
-    if (typeof selector === "string") {
-      _select = document.getElementById(selector);
-      _select.style.position = "position";
-    }
-    selnstr();
-  },
-};
+function _fadeout_(selector,time) {
+  _select = document.querySelector(selector);
+  var out_timer=1
+  let main_timer =  time / 100
+  _fade=true
+  setInterval(() => {
+out_timer  -= 0.01
+_opacity_(selector,out_timer)
+  }, main_timer);
+ 
+}
