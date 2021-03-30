@@ -1,30 +1,30 @@
 let _select;
 let _hide = false;
 let _fade=false
-function Valid_STR(command) {
+function Valid_Selector(selector) {
   if (typeof selector !== "string") {
     console.error(
       "Black-Cat.js : Please enter a valid string in selector parameter"
     );
-    command + ";";
+  
   }
 }
-function Valid_NUM(command) {
+function Valid_NUM(time) {
   if (typeof time !== "number") {
     console.error(
       "Black-Cat.js : Please enter a valid number in selector parameter"
     );
-    command + ";";
+  
   }
 }
 let values;
-function Valid_VALUE (command) {
+function Valid_VALUE (values) {
   if ( values > 1) {
     console.warn(
       "black-cat.js:please enter a number or string less than 1 in value parameter"
     );
   }
-  command + ";"
+ 
 }
 function _hide_(selector) {
   if (typeof selector === "string") {
@@ -41,20 +41,23 @@ function _show_(selector) {
     _select.style.visibility = "visible";
     _select.style.display = "block";
     _hide = false;
+  }else{
+  Valid_selector(selector)
   }
-  Valid_STR((_hide = _hide));
+
 }
+
 function _opacity_(selector, value) {
   values=value
 if (typeof value === "number") {
         _select = document.querySelector(selector);
         _select.style.opacity = value;
-        Valid_VALUE()
+        Valid_VALUE(value)
       } else if (typeof value === "string") {
         value = parseFloat(value);
         _select = document.querySelector(selector);
         _select.style.opacity = value;
-        Valid_VALUE()
+        Valid_VALUE(value)
       }
 }
 function _fadeout_(selector,time) {
